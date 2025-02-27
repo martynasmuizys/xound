@@ -3,8 +3,8 @@
 
 float normalize(float sample);
 
-float gain(float sample, float gain);
+float low_pass_filter(float current_sample, float previous_sample, float a);
 
-float low_pass_filter(float current_sample, float previous_sample);
+float high_pass_filter(float current_sample, float previous_sample, float a);
 
 #endif // !EFFECTS_HPP

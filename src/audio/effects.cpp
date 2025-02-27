@@ -11,19 +11,19 @@ float normalize(float sample) {
     return sample;
 }
 
-float gain(float sample, float gain) {
-    return sample * gain;
-}
-
-float low_pass_filter(float current_sample, float previous_sample) {
-    float a0      = 0.75f;
-    float a1      = 0.25f;
-    return a0 * current_sample + a1 * previous_sample;
+float low_pass_filter(float current_sample, float previous_sample, float a) {
+    // float a0      = 0.75f;
+    // float a1      = 0.25f;
+    // return a0 * current_sample + a1 * previous_sample;
     // float x      = SDL_tanf(3.14f * 100.0f / 44100.0f);
     // float output = x * current_sample + x * previous_sample - (x - 1) * current_sample;
     // output /= (x + 1);
 
     // return output;
-    // return a * current_sample + (1.0f - a) * previous_sample;
+    return a * current_sample + (1.0f - a) * previous_sample;
     // return (current_sample - previous_sample) / 2.0f;
+}
+
+float high_pass_filter(float current_sample, float previous_sample, float a) {
+    return a * current_sample - (a - 1.0f) * previous_sample;
 }
